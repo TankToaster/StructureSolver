@@ -12,7 +12,7 @@ Solution: DSLAJZ
 ### Compile
 Compile with `ghc` and run the resulting executable.
 
-### Using ghci
+### Or using ghci
 Import the script and use the solve function, which takes a single list of strings as its argument.
 
 ```
