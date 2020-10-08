@@ -2,9 +2,6 @@ import Debug.Trace
 import Data.List
 import Data.Char
 
--- Current failures
--- None that I know of
-
 main :: IO ()
 main = do
   putStrLn "Enter 2-letter glyphs one at a time. (lowercase is fine)"
