@@ -7,7 +7,11 @@ main = do
   putStrLn "Enter 2-letter glyphs one at a time. (lowercase is fine)"
   putStrLn "Enter anything else to finish and solve."
   glyphs <- (getUserGlyphs 0)
-  putStrLn (formatOutput (solve glyphs))
+  let solution = solve glyphs
+  putStrLn (formatAsChain solution)
+  if (length solution) == 1
+  then putStrLn (formatAsString solution)
+  else return ()
 
 getUserGlyphs :: Int -> IO [String]
 getUserGlyphs count = do
@@ -30,12 +34,18 @@ solve :: [String] -> [[String]]
 solve tuples
   = condenseChains (breakIntoChains [] tuples) 0
 
-formatOutput :: [[String]] -> String
-formatOutput input
+formatAsChain :: [[String]] -> String
+formatAsChain input
   | (length input) == 1
     = intercalate "->" (head input)
   | otherwise
     = "Unable to reduce to a single chain. The partial chains are:\n" ++ (intercalate "\n" (map (intercalate "->") input))
+
+formatAsString :: [[String]] -> String
+formatAsString input
+    = intercalate "" ([head solution] ++ map tail (tail solution))
+  where
+    solution = head input
 
 condenseChains :: [[String]] -> Int -> [[String]]
 condenseChains (chain:chains) failures
