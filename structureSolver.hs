@@ -69,3 +69,8 @@ breakIntoChains chains glyphs
     = chains
   | otherwise
     = breakIntoChains (chains ++ [[head glyphs]]) (tail glyphs)
+GHCi, version 8.6.5: http://www.haskell.org/ghc/  :? for help
+Prelude> :l structureSolver.hs
+*Main> solve ["AT","ET","HI","IE","KH","LA","TL"]
+[["AT","ET","HI","IE","KH","LA","TL"]]
+*Main> :quit
